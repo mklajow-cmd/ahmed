@@ -1,0 +1,1451 @@
+/*===== GOOGLE FONTS =====*/
+/* أضفت خط Cairo للفخامة و Tajawal للنصوص الطويلة */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;700&display=swap");
+
+/*===== VARIABLES CSS =====*/
+:root {
+  --header-height: 3rem;
+  --font-semi: 600;
+
+  /* لون ذهبي فاخر وأسود ملكي بحسب طلبك */
+  --first-color: #d4af37; /* ذهبي مطفي */
+  --first-color-alt: #b3922d;
+  --second-color: #0b0b0b; /* أسود عميق */
+  --text-color: #e0e0e0;
+  
+  /*===== Fuente y tipografia =====*/
+  --body-font: "Tajawal", sans-serif;
+  --title-font: "Cairo", sans-serif;
+  
+  --big-font-size: 2rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: .938rem;
+  --smaller-font-size: .75rem;
+
+  /*===== Margenes =====*/
+  --mb-2: 1rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+
+  /*===== z index =====*/
+  --z-back: -10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --big-font-size: 3.5rem;
+    --h2-font-size: 2rem;
+    --normal-font-size: 1rem;
+    --smaller-font-size: .875rem;
+  }
+}
+
+/*===== BASE =====*/
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  color: var(--text-color);
+  background-color: var(--second-color); /* خلفية سوداء فخمة */
+  direction: rtl; /* تفعيل الاتجاه العربي */
+  text-align: right;
+}
+
+h1, h2, p {
+  margin: 0;
+}
+
+h1, h2 {
+    font-family: var(--title-font);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*===== CLASS CSS (العناوين المعدلة) ===== */
+.section-title {
+  position: relative;
+  font-size: var(--h2-font-size);
+  color: var(--first-color);
+  margin-top: var(--mb-2);
+  margin-bottom: var(--mb-6); /* زيادة المسافة تحت العنوان */
+  text-align: center;
+  font-family: var(--title-font);
+  font-weight: 700;
+  letter-spacing: 1px; /* يعطي فخامة في العناوين */
+}
+
+.section-title::after {
+  position: absolute;
+  content: "";
+  width: 40px;      /* جعلناه أقصر ليكون أكثر أناقة */
+  height: 2px;      /* سمك نحيف ودقيق */
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: -1rem;    /* وضعناه تحت النص بمسافة ثابتة بدلاً من top لمنع التداخل */
+  background-color: var(--first-color);
+  border-radius: 2px; /* حواف ناعمة جداً */
+}
+
+.section {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+/*===== LAYOUT =====*/
+.bd-grid {
+  max-width: 1024px;
+  display: grid;
+  margin-left: var(--mb-2);
+  margin-right: var(--mb-2);
+}
+
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: rgba(11, 11, 11, 0.9); /* شفافية بسيطة */
+  box-shadow: 0 1px 4px rgba(212, 175, 55, 0.1);
+  backdrop-filter: blur(10px);
+}
+/*===== NAV =====*/
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-semi);
+}
+
+@media screen and (max-width: 767px) {
+  .nav__menu {
+    position: fixed;
+    top: var(--header-height);
+    left: -100%; /* القائمة تظهر من اليسار في العربي */
+    width: 80%;
+    height: 100%;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    transition: 0.5s;
+  }
+}
+
+.nav__item {
+  margin-bottom: var(--mb-4);
+}
+
+.nav__link {
+  position: relative;
+  color: #fff;
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.nav__link:hover::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0.18rem;
+  right: 0; /* في العربي نستخدم right */
+  top: 2rem;
+  background-color: var(--first-color);
+}
+
+.nav__logo {
+  color: var(--first-color);
+  font-weight: 900;
+}
+
+.nav__toggle {
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.show {
+  left: 0;
+}
+/*===== HOME =====*/
+/* --- الإعدادات العامة (الكمبيوتر) --- */
+.home {
+  position: relative;
+  row-gap: 5rem;
+  padding: 7rem 0 2rem; /* زيادة البادينج العلوي ليعطي مساحة */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* تقسيم الصفحة لنص وصورة بجانب بعض */
+  align-items: center;
+}
+
+.home__data {
+  z-index: 2;
+}
+
+.home__title {
+  font-size: var(--big-font-size);
+  margin-bottom: var(--mb-2);
+}
+
+.home__img {
+  position: relative; /* غيرناه من absolute لـ relative عشان ما يغطي النص */
+  width: 300px;
+  justify-self: center; /* وضع الصورة في منتصف عمودها */
+}
+
+.home__social {
+  display: flex;
+  flex-direction: column; /* عمودي في الكمبيوتر (على اليسار) */
+  row-gap: 1.5rem;
+  position: absolute;
+  left: 2rem;
+  bottom: 5rem;
+}
+
+/* --- تلوين أيقونات التواصل الاجتماعي بالأصفر --- */
+.home__social-icon {
+    font-size: 1.5rem;
+    color: #d4af37 !important; /* اللون الذهبي الذي تفضله */
+    transition: .3s;
+}
+
+/* حركة بسيطة عند تمرير الماوس فوق الأيقونة */
+.home__social-icon:hover {
+    color: #b3922d !important; /* لون ذهبي أغمق قليلاً عند التمرير */
+    transform: translateY(-3px); /* ترتفع للأعلى قليلاً */
+    display: inline-block;
+}
+.home__blob {
+  fill: var(--first-color);
+  opacity: 0.8;
+}
+
+/* --- تعديلات الجوال (الحل السحري للمشكلة) --- */
+@media screen and (max-width: 767px) {
+  .home {
+    grid-template-columns: 1fr; /* عمود واحد فقط */
+    padding: 4rem 0 2rem;
+    row-gap: 2rem;
+    text-align: center; /* النصوص في المنتصف */
+  }
+.home__blob {
+  fill: var(--first-color);
+  opacity: 0.8;
+}
+/* السطر 256 تقريباً */
+/* السطر 256 تقريباً في ملفك */
+.home__img {
+    position: relative; /* غيرها من absolute لكي لا تطير فوق النص */
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    margin: 0 auto;    /* لتوسيط الصورة في منتصف الشاشة */
+    display: block;
+    z-index: 1;
+
+    /* الكود الذي أضفته للنعومة ممتاز، حافظ عليه */
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 25%);
+    mask-image: linear-gradient(to top, transparent 0%, black 25%);
+}
+
+  .home__data {
+    margin-top: 1rem;
+  }
+
+  .home__social {
+    position: static; /* الأيقونات تأخذ مكانها الطبيعي تحت النص */
+    flex-direction: row; /* تصبح أفقية للجوال */
+    justify-content: center;
+    column-gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .home__title {
+    font-size: 1.8rem !important; /* حجم العنوان المناسب للجوال */
+  }
+}
+/* --- تنسيق زر تواصل معي --- */
+.home__button {
+    margin-top: 2.5rem !important; /* لدفعه للأسفل بعيداً عن النص */
+    padding: 1rem 2rem;
+    background-color: var(--first-color);
+    color: var(--second-color) !important; /* الأسود الملكي ليتناسب مع الذهبي */
+    font-weight: var(--font-semi);
+    border-radius: .5rem;
+    transition: .3s;
+}
+
+.home__button:hover {
+    background-color: var(--first-color-alt);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); /* ظل ذهبي خفيف عند التمرير */
+    transform: translateY(-3px);
+}
+/* BUTTONS */
+.button {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #000; /* نص أسود فوق الذهبي يعطي فخامة */
+  padding: 0.75rem 2.5rem;
+  font-weight: 700;
+  border-radius: 0.2rem; /* زوايا حادة قليلاً تعطي طابعاً معمارياً */
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: var(--first-color-alt);
+  box-shadow: 0px 10px 36px rgba(212, 175, 55, 0.2);
+}
+
+/* ABOUT */
+.about__container {
+  row-gap: 2rem;
+  text-align: center;
+}
+
+.about__subtitle {
+  margin-bottom: var(--mb-2);
+  color: var(--first-color);
+  font-size: var(--h2-font-size);
+}
+
+.about__img {
+  justify-self: center;
+}
+/* السطر 315 في ملفك */
+.about__img img {
+    width: 260px;
+    border-radius: 16px;
+    padding: 0; /* حذفنا الـ 10px لإزالة الفراغ الأبيض */
+    background-color: transparent !important; /* لضمان الشفافية */
+    border: none !important; /* حذف الحدود التي تسبب اللون الأبيض */
+    
+    /* إضافة التلاشي الناعم في الأسفل لدمج الصورة مع الخلفية */
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
+    mask-image: linear-gradient(to top, transparent 0%, black 20%);
+}
+/* SKILLS */
+.skills__container {
+  row-gap: 2rem;
+  text-align: right;
+}
+
+.skills__data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-weight: var(--font-semi);
+  padding: 0.5rem 1rem;
+  margin-bottom: var(--mb-4);
+  border-radius: 0.5rem;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+}
+
+.skills__icon {
+  font-size: 2rem;
+  margin-left: var(--mb-2); /* margin-left بدلاً من right للعربي */
+  color: var(--first-color);
+}
+
+.skills__names {
+  display: flex;
+  align-items: center;
+}
+
+.skills__bar {
+  position: absolute;
+  right: 0; /* يبدأ التحميل من اليمين في العربي */
+  bottom: 0;
+  background-color: var(--first-color);
+  height: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+/* WORK */
+.work__container {
+  row-gap: 2rem;
+}
+
+.work__img {
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.work__img img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* CONTACT */
+.contact__input {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: var(--normal-font-size);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid #333;
+  outline: none;
+  margin-bottom: var(--mb-4);
+}
+
+.contact__input:focus {
+    border-color: var(--first-color);
+}
+
+.contact__button {
+  margin-right: auto; /* الزر في اليسار (نهاية الفورم العربي) */
+  margin-left: 0;
+}
+/* ===== FOOTER ===== */
+.footer {
+    background-color: #000; /* خلفية سوداء ملكية كما طلبت */
+    border-top: 1px solid var(--first-color);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer__title {
+    color: var(--first-color); /* الاسم باللون الذهبي */
+    font-weight: var(--font-semi);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* تغيير لون الأيقونات (واتساب، فيسبوك، انستقرام) للأصفر/الذهبي */
+.footer__icon {
+    color: var(--first-color) !important; /* اللون الذهبي */
+    font-size: 1.5rem;
+    margin: 0 .5rem;
+    transition: .3s;
+}
+
+.footer__icon:hover {
+    color: var(--first-color-alt) !important;
+    transform: translateY(-3px);
+}
+
+.footer__copy {
+    color: #fff; /* حقوق الحفظ باللون الأبيض */
+    font-size: var(--smaller-font-size);
+    margin-top: 1rem;
+    display: block;
+}
+/* ===== MEDIA QUERIES (Desktop Fix) ===== */
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+
+  /* 1. إصلاح التبويبات لتكون أفقية */
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+.nav__list {
+    display: flex; 
+    flex-direction: row; 
+    column-gap: 2.5rem; /* نعتمد على الفجوة بدلاً من الهوامش لتوزيع العناصر بنظافة */
+    align-items: center;
+}
+  .nav__item {
+    margin: 0 !important; /* تصفير كل الهوامش لضمان عدم وجود إزاحة جانبية */
+}
+  .nav__toggle {
+    display: none; /* إخفاء زر المنيو في الكمبيوتر */
+  }
+  .nav__link {
+    color: var(--text-color);
+  }
+
+  /* 2. إصلاح القسم الرئيسي (النص يمين والصورة يسار) */
+  .home {
+    height: 100vh; /* ليأخذ القسم كامل ارتفاع الشاشة */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* تقسيم الشاشة لنصفين متساويين */
+    grid-template-areas: "img data"; /* تعريف أماكن العناصر */
+    align-items: center;
+    column-gap: 2rem;
+    padding: 0;
+  }
+
+  .home__data {
+    grid-area: data; /* النص في جهة اليمين (حسب ترتيب RTL) */
+    text-align: right;
+    z-index: 2;
+  }
+
+  .home__img {
+    grid-area: img; /* الصورة في جهة اليسار */
+    position: relative; /* إلغاء الـ absolute لمنع التداخل */
+    width: 450px; /* تحكم بحجم الصورة */
+    left: 0;
+    right: auto;
+    bottom: 0;
+    justify-self: center; /* توسيط الصورة داخل نصفها الخاص */
+  }
+
+  .home__social {
+    position: absolute;
+    bottom: 2rem;
+    flex-direction: row;
+    column-gap: 2rem;
+  }
+
+  /* 3. إصلاح الأقسام الأخرى لتبدو احترافية */
+  .about__container, .skills__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4rem;
+    align-items: center;
+    text-align: right;
+  }
+}/* تقليل المسافة بحاجة بسيطة جداً لضبط التوازن */
+.section {
+    padding-top: 3rem;    /* قللناها من 4 إلى 3 */
+    padding-bottom: 1.5rem; 
+}
+
+/* إزاحة تمرير دقيقة */
+section {
+    scroll-margin-top: 3.5rem; /* تقليل بسيط لراحة العين */
+}/* تحريك قسم المهارات لأسفل قليلاً بمفرده */
+#skills {
+    padding-top: 2.5rem; /* يمكنك تقليل الرقم إذا أردت مسافة أقل */
+}
+
+/* لضبط دقة القفز عند الضغط على كلمة المهارات في المنيو */
+#skills {
+    scroll-margin-top: 2.5rem; 
+}/* زيادة المسافة قبل قسم المهارات فقط ليفصل عن القسم الذي قبله */
+#skills {
+    margin-top: 10rem; /* هذه المسافة ستدفع القسم للأسفل لتختفي من الشاشة الحالية */
+    padding-top: 5rem; /* مسافة إضافية للعنوان داخل القسم */
+}
+
+/* لضمان أن التمرير التلقائي يذهب لمكان صحيح بعد زيادة المسافة */
+#skills {
+    scroll-margin-top: 2rem;
+}
+/* الكلاس الذي سيتم تفعيله عند الوقوف على القسم */
+.active-link {
+  color: var(--first-color) !important;
+  font-weight: 700;
+}
+/* ألوان الوضع الفاتح */
+body.light-theme {
+  --first-color: #d4af37;      /* الذهبي يبقى كما هو للفخامة */
+  --second-color: #f2f2f2;     /* خلفية فاتحة */
+  --text-color: #1a1a1a;       /* نص غامق للقراءة */
+}
+
+/* تعديلات إضافية لضمان ظهور العناصر بشكل جميل في الوضع الفاتح */
+body.light-theme .l-header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+body.light-theme .nav__link, 
+body.light-theme .nav__logo,
+body.light-theme .home__title {
+  color: #1a1a1a;
+}
+
+body.light-theme .skills__data {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+/* ضبط القائمة المنسدلة في الوضع الفاتح للهاتف */
+@media screen and (max-width: 767px) {
+    body.light-theme .nav__menu {
+        background-color: #ffffff; /* جعل الخلفية بيضاء صريحة بدل الشفافة */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* ظل خفيف لإعطاء عمق */
+    }
+}
+
+/* تغيير لون أيقونة الثلاث شرطات (Toggle) في الوضع الفاتح */
+body.light-theme .nav__toggle {
+    color: #1a1a1a;
+}
+/* تحسين القائمة لتظهر من اليسار بتناسق مع الزر */
+@media screen and (max-width: 767px) {
+    .nav__menu {
+        position: fixed;
+        top: var(--header-height);
+        left: -100%; /* تغيير البداية لتكون من اليسار */
+        right: auto; /* إلغاء خاصية اليمين */
+        width: 80%;
+        height: 100vh;
+        padding: 3rem;
+        background-color: #101010;
+        transition: .4s;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.3); /* الظل أصبح لليمين */
+    }
+
+    /* تحسين القائمة في الوضع الفاتح */
+    body.light-theme .nav__menu {
+        background-color: #ffffff;
+        box-shadow: 5px 0 20px rgba(0,0,0,0.05);
+        border-right: 1px solid #eee; /* الخط الفاصل أصبح لليمين */
+        border-left: none;
+    }
+}
+
+/* الكود المسؤول عن إظهار القائمة عند الضغط (من اليسار) */
+.show {
+    left: 0 !important;
+}
+/* حل مشكلة ميلان قسم تواصل معي */
+.contact__container {
+    display: grid;
+    grid-template-columns: 1fr; /* نضع العناصر فوق بعضها في المنتصف */
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.contact__info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    width: 100%;
+    max-width: 1000px; /* تحديد عرض أقصى للحاوية */
+    margin-left: auto;  /* أهم سطر للتوسيط */
+    margin-right: auto; /* أهم سطر للتوسيط */
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.contact__box {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--container-color);
+    border-radius: .5rem;
+    /* إلغاء أي ميول قديمة */
+    margin: 0 auto !important; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* إذا كان هناك فورم (Form) بجانب الصناديق يسبب الزحمة، سنجعله يتوسط أيضاً */
+.contact__form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}/* حل مشكلة ميلان الموقع بالكامل وتوسيط المحتوى */
+.bd-grid {
+    display: grid;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+    align-content: center !important;
+}
+
+/* توسيط النصوص والعناوين في كل الأقسام */
+.section-title, .section-subtitle {
+    text-align: center;
+    width: 100%;
+}
+
+/* توسيط قسم تواصل معي بالتحديد بناءً على الصورة */
+.contact__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* توسيط الفورم (الحقول السوداء) لكي لا تظل مائلة */
+.contact__form {
+    width: 100%;
+    max-width: 600px; /* يمكنك تكبيرها أو تصغيرها حسب رغبتك */
+    margin: 0 auto !important;
+}
+
+/* توسيط معرض الأعمال */
+.work__container {
+    justify-items: center;
+    align-items: center;
+}/* تحسين مظهر حقول الإدخال في الوضع الفاتح */
+body.light-theme .contact__input {
+    background-color: #f4f4f4; /* رمادي فاتح جداً */
+    color: #1a1a1a;            /* نص غامق */
+    border: 1px solid #ddd;
+}
+
+body.light-theme .contact__input::placeholder {
+    color: #888;
+}/* رفع قسم تواصل معي للأعلى */
+.contact.section {
+    padding-top: 2rem !important; /* تقليل المسافة العلوية للقسم */
+}
+
+/* إذا كان هناك هامش علوي للحاوية الداخلية */
+.contact__container {
+    margin-top: -1rem; /* تحريك المحتوى للأعلى قليلاً */
+}
+
+/* تعديل المسافة بين عنوان القسم والمحتوى */
+.section-title {
+    margin-bottom: 2rem; /* تقليل الفراغ تحت كلمة (تواصل معي) */
+}/* رفع الخط الذهبي تحت العناوين ليكون قريباً */
+.section-title::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--first-color);
+    margin: 0.5rem auto 0; /* رفعنا الخط للأعلى بتقليل المسافة (0.5rem) */
+}
+
+/* حل تلاصق الرقم والإيميل */
+.contact__text {
+    display: block;
+    margin-bottom: 1rem; /* إضافة مسافة بين السطرين */
+    font-weight: var(--font-semi);
+}
+
+/* إضافة مسافة بسيطة بين الأيقونة والنص */
+.contact__text i {
+    margin-left: 0.5rem;
+    color: var(--first-color);
+}/* رفع الخط تحت الروابط النشطة في القائمة */
+.active-link::after {
+    bottom: 0.2rem !important; /* رفعه ليكون تحت الكلمة مباشرة */
+}
+
+/* موازنة الهيدر في الوضع الفاتح */
+body.light-theme .l-header {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* لمسة زجاجية فخمة */
+}.contact__form {
+    margin-top: 2rem !important; /* دفع الحقول للأسفل قليلاً لتعطي مساحة للمعلومات */
+}
+
+.contact__input {
+    margin-bottom: 1.5rem; /* مسافة بين كل حقل والآخر */
+}
+/* --- إعادة ضبط الهيدر (قانون التوسيط والترتيب) --- */
+.nav {
+    display: flex !important;
+    justify-content: space-between !important; /* الاسم في طرف والأزرار في طرف */
+    align-items: center;
+    height: var(--header-height);
+}
+
+.nav__btns {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem; /* مسافة أنيقة بين القمر والمنيو */
+}
+
+.nav__logo {
+    white-space: nowrap; /* يمنع الاسم من الانقسام لسطرين في الهاتف */
+}
+
+/* --- ضبط القائمة في الهاتف --- */
+@media screen and (max-width: 767px) {
+.nav__menu {
+        position: fixed;
+        top: var(--header-height);
+        left: -100%; /* تخرج من اليسار */
+        width: 80%;
+        height: 100vh;
+        background-color: var(--container-color);
+        padding: 3rem;
+        transition: .4s;
+        box-shadow: 3px 0 10px rgba(0,0,0,0.1);
+    }
+    /* جعل خلفية القائمة بيضاء في الوضع الفاتح */
+    body.light-theme .nav__menu {
+        background-color: #ffffff;
+    }
+}
+/* 1. الحفاظ على شكل الشريط العلوي الاحترافي */
+.nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center;
+    height: var(--header-height);
+    width: 100%;
+}
+
+.nav__btns {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+/* 2. إصلاح الـ bd-grid لكي لا يخرب بقية الأقسام */
+.bd-grid {
+    max-width: 1024px;
+    display: grid;
+    /* حذفنا الـ 100% لكي تعود الأعمدة (نص وصورة) بجانب بعضها */
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .bd-grid {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* 3. لضمان عودة الصورة والنص بجانب بعضهما في القسم الأول */
+@media screen and (min-width: 768px) {
+    .home__container {
+        grid-template-columns: repeat(2, 1fr) !important; /* عودة النظام لعمودين */
+        align-items: center;
+        text-align: right;
+    }
+}
+/* تنسيق صف المهارات ليكون مرناً */
+.skills__data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    font-weight: var(--font-semi);
+    padding: .5rem 1rem;
+    margin-bottom: var(--mb-4);
+}
+
+/* محاذاة الأيقونة مع النص */
+.skills__names {
+    display: flex;
+    align-items: center;
+}
+
+/* تنسيق الأيقونة الذهبية */
+.skills__icon {
+    font-size: 1.5rem;
+    margin-left: 0.5rem; /* مسافة من اليسار لأن الموقع RTL */
+    color: var(--first-color);
+}
+
+/* تعديل تموضع النسبة المئوية */
+.skills__percentage {
+    font-weight: var(--font-semi);
+}
+
+/* لضمان بقاء شريط المهارات تحت النص وليس متداخلاً */
+.skills__bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    border-radius: .5rem;
+    background-color: var(--first-color);
+}.skills__names {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem; /* هذه تضمن أن الأيقونة ملتصقة بالاسم */
+}
+/* --- إزاحة النص والأيقونة قليلاً ليعود لمكانه الطبيعي --- */
+.skills__names {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse; /* أيقونة ثم نص */
+    margin-right: 1.5rem; /* هذه هي الإزاحة التي ستدفع النص لليسار قليلاً عن الحافة */
+}
+
+/* --- توحيد لون جميع الشعارات للذهبي الموحد --- */
+.skills__names img, 
+.skills__icon {
+    width: 22px !important;
+    height: 22px !important;
+    margin-left: 0.8rem;
+    object-fit: contain;
+
+    /* هذا الكود السحري يحول كل الصور لنفس درجة الذهبي (edae10) */
+    filter: brightness(0) saturate(100%) invert(78%) sepia(54%) saturate(416%) hue-rotate(354deg) brightness(92%) contrast(89%) !important;
+}
+/* --- تنسيق معرض الأعمال الجديد --- */
+.work__filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.work__item {
+    cursor: pointer;
+    color: var(--title-color);
+    padding: .25rem .75rem;
+    font-weight: var(--font-medium);
+    border-radius: .5rem;
+    transition: .3s;
+}
+
+/* لون الزر عند التفعيل */
+.active-work {
+    background-color: var(--first-color);
+    color: #fff;
+}
+
+.work__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* صورتين في السطر */
+    gap: 1.5rem;
+    justify-content: center;
+}
+/* --- تنسيق معرض الأعمال الفخم (النسخة النهائية) --- */
+
+/* 1. الحاوية الأساسية */
+.work__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* صورتين للتابلت والشاشات المتوسطة */
+    gap: 2rem;
+    justify-content: center;
+    align-items: start;
+}
+
+/* 2. كرت العمل */
+.work__card {
+    background-color: var(--container-color);
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: transform .4s, box-shadow .4s, border-color .4s; /* تنعيم الحركة */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* تأثير الحوم (Hover) الموحد */
+.work__card:hover {
+    transform: translateY(-0.5rem);
+    border-color: var(--first-color);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 3. تنسيق الصورة (لمنع التشويه) */
+.work__img {
+    width: 100%;
+    height: 250px; /* توحيد الارتفاع للفخامة */
+    object-fit: cover; /* يمنع التمطط */
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+/* 4. النصوص */
+.work__title {
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    margin-bottom: 0.5rem;
+    color: var(--title-color);
+}
+
+/* --- تعديلات الشاشات (Responsive) --- */
+
+/* للهواتف (عرض فخم بملء الشاشة) */
+@media screen and (max-width: 767px) {
+    .work__container {
+        grid-template-columns: 1fr !important; /* صورة واحدة فقط لتركيز العين */
+        gap: 2.5rem; /* مسافة مريحة بين الكروت */
+    }
+}
+
+/* للشاشات الكبيرة (الكمبيوتر) */
+@media screen and (min-width: 992px) {
+    .work__container {
+        grid-template-columns: repeat(3, 1fr) !important; /* 3 صور متناسقة */
+    }
+}
+/* 1. اللون الافتراضي (بما أن الموقع ليلي افتراضياً فالاسم يجب أن يكون أبيض) */
+.nav__name, .nav__logo span {
+    color: #FFFFFF !important;
+    transition: 0.4s;
+}
+
+/* 2. عندما يتم تفعيل الوضع الفاتح (light-theme) يرجع الاسم أسود */
+body.light-theme .nav__name, 
+body.light-theme .nav__logo span {
+    color: #000000 !important;
+}
+/* هذا الكود يضمن بقاء الشعار كما هو في كل الأوضاع */
+
+/* 1. تثبيت شكل الشعار في كل الحالات */
+.nav__logo-img {
+    filter: none !important; /* إلغاء أي فلاتر سابقة */
+    transition: 0.4s;
+}
+
+/* 2. التأكد من عدم تأثره عند تفعيل الوضع الفاتح */
+body.light-theme .nav__logo-img {
+    filter: none !important; 
+}
+/* 1. تثبيت ألوان الصورة الشخصية والـ SVG ومنعها من الانعكاس */
+.home__img svg, 
+.home__blob, 
+.home__blob-g, 
+.home__blob-img, 
+image[href*="perfil.png"] {
+    filter: none !important;
+    -webkit-filter: none !important;
+    mix-blend-mode: normal !important;
+}
+
+/* 2. ضمان أن الاسم والشعار يظلان باللون الصحيح */
+/* في الوضع الافتراضي (الأسود) */
+.nav__name, .nav__logo span {
+    color: #FFFFFF !important;
+}
+.nav__logo-img {
+    filter: none !important;
+}
+
+/* 3. عند التحول للوضع الفاتح (light-theme) */
+body.light-theme .nav__name, 
+body.light-theme .nav__logo span {
+    color: #000000 !important;
+}
+
+/* 4. الضربة القاضية: إلغاء أي فلاتر عامة قد تفرضها الملفات الأخرى */
+body.light-theme .home__img, 
+body.dark-theme .home__img,
+.dark-theme .home__img {
+    filter: none !important;
+}
+/* ===== الحل النهائي والقطعي لخلفية القائمة ===== */
+
+/* 1. في الوضع الداكن (الافتراضي أو عند تفعيل الدارك) */
+
+/* 3. تعديل ألوان النصوص داخل القائمة لتناسب الخلفية */
+.dark-theme .nav__link, 
+body.dark-theme .nav__link {
+    color: #ffffff !important;
+}
+
+body.light-theme .nav__link {
+    color: #000000 !important;
+}
+
+/* 4. تعديل زر القائمة (Toggle) عشان يظهر دائماً */
+.nav__toggle {
+    color: var(--title-color) !important;
+}
+.work__img {
+    width: 100%;
+    height: 250px; /* يمكنك زيادة أو إنقاص الرقم حسب رغبتك */
+    object-fit: cover; /* هذا السطر يضمن عدم تشوه الصورة */
+    border-radius: 1rem;
+    transition: .4s;
+}
+
+/* تحويل الكروت لشكل عصري وفخم */
+/* تنسيق كروت الأعمال المتجاوب مع الوضع الفاتح والداكن */
+.work__card {
+    /* بدلاً من وضع لون ثابت، نستخدم المتغير الذي يتغير بتغير الثيم */
+    background-color: var(--container-color); 
+    
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    
+    /* إطار خفيف جداً يتناسب مع الثيم */
+    border: 1px solid rgba(212, 175, 55, 0.1); 
+    
+    transition: background-color .4s, transform .4s, border .4s;
+}
+
+/* في حالة الوضع الفاتح (Light Theme) */
+/* تأكد أن هذا الكلاس موجود في كود الـ JS الخاص بك */
+body.light-theme .work__card {
+    background-color: #f2f2f2; /* رمادي فاتح جداً أو أبيض دخاني */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* تأثير عند تمرير الماوس لزيادة الفخامة */
+.work__card:hover {
+    transform: translateY(-10px);
+    border-color: var(--first-color); /* يبرز الإطار الذهبي */
+}
+.work__card:hover {
+    border: 1px solid #d4af37; /* يبرز الإطار الذهبي عند الحوم */
+    transform: translateY(-10px);
+}
+
+/* إضافة لمسة فنية للعنوان */
+/* عنوان المشروع تحت الصورة */
+.work__title {
+    color: var(--title-color); /* سيتحول لأسود في الفاتح وأبيض في الداكن */
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    margin-bottom: .25rem;
+}
+
+/* رابط "استكشاف المشروع" */
+.work__button {
+    color: var(--first-color); /* يفضل بقاء الذهب لأنه هويتك */
+    display: flex;
+    align-items: center;
+    column-gap: .25rem;
+    font-size: var(--smaller-font-size);
+}
+
+/* لضمان عدم تغير اللون بعد الضغط عليه */
+.work__button:visited {
+    color: #d4af37 !important;
+}
+
+/* تأثير بسيط عند تمرير الماوس */
+.work__button:hover {
+    color: #bfa030 !important; /* درجة أغمق قليلاً عند الحوم */
+    column-gap: .8rem;
+}
+/* هذا الكود يلغي اللون الأزرق والبنفسجي تماماً عن روابط المشاريع */
+.work__button, .work__button:visited, .work__button:active {
+    color: #d4af37 !important; 
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    column-gap: .5rem;
+}
+
+.work__button:hover {
+    color: #bfa030 !important; /* لون أغمق قليلاً عند تمرير الماوس */
+}
+/* إصلاح الخط الأصفر تحت "تواصل معي" وبقية الروابط */
+.nav__link::after {
+    content: "";
+    position: absolute;
+    width: 0; /* مخفي افتراضياً */
+    height: 2px;
+    background-color: var(--first-color);
+    bottom: -5px; /* يضعه تحت النص بمسافة مريحة */
+    left: 0;
+    right: 0; /* التوسيط الكامل */
+    margin: 0 auto;
+    transition: .3s;
+    transform: none !important; /* منع أي دوران موروث */
+}
+/* تفعيل الخط عند التمرير أو الرابط النشط */
+.nav__link:hover::after, 
+.active-link::after {
+    width: 100% !important; /* يتمدد بعرض الكلمة فقط */
+}
+/* --- عرض الأعمال صورتين بجانب بعض في الهاتف --- */
+@media screen and (max-width: 767px) {
+    .work__container {
+        /* هذا السطر هو السر: يجعلها صورتين */
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 1rem !important; /* تقليل المسافة لتناسب حجم الشاشة */
+        padding: 0 0.5rem !important;
+    }
+
+    .work__card {
+        padding: 0.75rem !important; /* تقليل الحشو الداخلي للكارت */
+        border-radius: 1rem !important;
+    }
+
+    .work__img {
+        height: 150px !important; /* تقليل الارتفاع ليتناسب مع العرض الصغير */
+        border-radius: 0.75rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .work__title {
+        font-size: 0.8rem !important; /* تصغير الخط لكي لا ينزل لسطرين */
+        margin-bottom: 0.25rem !important;
+    }
+
+    .work__button {
+        font-size: 0.7rem !important;
+    }
+}
+
+/* للشاشات الكبيرة يظل كما هو 3 صور */
+@media screen and (min-width: 992px) {
+    .work__container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 2rem !important;
+    }
+}
+/* --- تنسيق زر تغيير اللغة --- */
+.nav__language {
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: var(--font-semi);
+    color: var(--title-color);
+    border: 1px solid var(--first-color); /* إطار ذهبي نحيف */
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: .3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem; /* مسافة عن زر الشمس */
+}
+
+.nav__language:hover {
+    background-color: var(--first-color);
+    color: #000;
+}
+
+/* لضمان تناسق الأزرار في الجوال */
+@media screen and (max-width: 767px) {
+    .nav__btns {
+        display: flex;
+        align-items: center;
+        column-gap: 0.75rem;
+    }
+}
+/* --- الحل الجذري والنهائي للألوان ومنع البنفسجي --- */
+
+/* استهداف مباشر وقوي لكل حالات الروابط في القائمة */
+.nav__menu ul li a, 
+.nav__menu ul li a:link, 
+.nav__menu ul li a:visited, 
+.nav__menu ul li a:active {
+    color: var(--title-color) !important; /* يجبره على الأبيض في الليل والأسود في النهار */
+    text-decoration: none !important;
+    opacity: 1 !important;
+}
+
+/* حالة تمرير الماوس فقط هي التي تتغير للأصفر */
+.nav__menu ul li a:hover {
+    color: var(--first-color) !important;
+}
+
+/* الرابط النشط يبقى أصفر */
+.nav__menu ul li a.active-link {
+    color: var(--first-color) !important;
+}
+
+/* التأكد من أن الخطوط لا تتأثر بزيارة الروابط */
+a:visited {
+    color: inherit;
+}
+/* --- التنسيق المتوافق مع نظام التبديل في موقعك --- */
+
+/* 1. الحالة الافتراضية للموقع (الوضع الغامق) */
+@media screen and (max-width: 767px) {
+    .nav__menu {
+        background-color: #0b0b0b !important; /* أسود صلب */
+        opacity: 1 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 1px solid #d4af37;
+    }
+}
+
+/* 2. الحالة عند تفعيل الوضع الفاتح (وجود كلاس light-theme) */
+body.light-theme .nav__menu {
+    background-color: #ffffff !important; /* أبيض صلب */
+    background: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* 3. لضمان ظهور النصوص بوضوح في الوضع الفاتح */
+body.light-theme .nav__link {
+    color: #000000 !important;
+}
+/* تصغير النصوص الإنجليزية في وضع الجوال */
+@media screen and (max-width: 767px) {
+    /* العنوان الرئيسي (Designing beyond Reality) */
+    .home__title {
+        font-size: 1.5rem !important; 
+        line-height: 1.2;
+    }
+
+    /* نص التخصص (Architectural Visualization & Branding) */
+    .home__subtitle, 
+    .home__description {
+        font-size: 0.85rem !important;
+        margin-top: 0.5rem;
+    }
+
+    /* اسمك المكتوب بالإنجليزية (M. Abd-ul Salam) */
+    .nav__logo, 
+    .home__data h1 {
+        font-size: 1.1rem !important;
+    }
+
+    /* أي نصوص فرعية أخرى بالإنجليزية */
+    .section__subtitle {
+        font-size: 0.75rem !important;
+    }
+}
+/* الحل النهائي لترتيب الصورة فوق النصوص في الجوال */
+@media screen and (max-width: 767px) {
+    .home__container {
+        display: grid !important; /* التأكد من تفعيل نظام الشبكة */
+    }
+
+    .home__content {
+        display: grid !important;
+        /* جعل المحتوى يتكون من عمود واحد فقط */
+        grid-template-columns: 1fr !important; 
+        row-gap: 2rem;
+    }
+
+    /* إعطاء الصورة الرقم 1 لتصعد للأعلى */
+    .home__img {
+        order: 1 !important;
+        display: block !important;
+        margin: 0 auto !important; /* توسيط الصورة */
+    }
+
+    /* إعطاء النصوص الرقم 2 لتنزل للأسفل */
+    .home__data {
+        order: 2 !important;
+        text-align: center !important; /* توسيط النصوص */
+    }
+
+    /* إعطاء الأزرار الاجتماعية الرقم 3 لتكون في الأخير */
+    .home__social {
+        order: 3 !important;
+    }
+}
+/* موازنة أيقونات الهيدر بناءً على كود الـ HTML الخاص بك */
+@media screen and (max-width: 767px) {
+    .nav__btns {
+        display: flex !important;
+        align-items: center !important; /* هذا السطر يضمن المحاذاة العمودية السنتر */
+        column-gap: 1.25rem !important; /* مسافة متساوية بين الأيقونات الثلاث */
+    }
+
+    /* توحيد سلوك كل عنصر داخل الحاوية (اللغة، الثيم، التوجل) */
+    .nav__language, 
+    .change-theme, 
+    .nav__toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 !important; /* إلغاء أي هوامش تلقائية */
+        padding: 0 !important;
+        cursor: pointer;
+        height: 100% !important; /* لضمان تساوي الارتفاع */
+    }
+
+    /* ضبط نص اللغة (EN) ليكون على نفس مستوى الأيقونات */
+    .lang-text {
+        font-size: 0.85rem !important;
+        font-weight: 700;
+        line-height: 1 !important;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* موازنة حجم أيقونات المكتبة */
+    .change-theme, 
+    .nav__toggle i {
+        font-size: 1.25rem !important;
+        line-height: 1 !important;
+    }
+}
+/* تنسيق احترافي لزر تغيير اللغة */
+@media screen and (max-width: 767px) {
+    .nav__language {
+        border: 1px solid var(--first-color); /* إطار بلون الهوية الخاص بك */
+        padding: 4px 8px !important;           /* مساحة داخلية للنص */
+        border-radius: 4px;                  /* زوايا منحنية بسيطة */
+        transition: 0.3s;
+        background-color: transparent;
+    }
+
+    .lang-text {
+        font-size: 0.75rem !important;        /* حجم أصغر وأرشق */
+        font-weight: 600 !important;
+        color: var(--title-color);           /* لون النص يتبع لون العناوين */
+        text-transform: uppercase;           /* حروف كبيرة */
+        letter-spacing: 1px;                 /* تباعد بسيط بين الحروف */
+    }
+
+    /* تأثير عند الضغط أو التحويم في الوضع الفاتح */
+    body.light-theme .nav__language {
+        border-color: #000;
+    }
+
+    /* تغيير الخلفية عند تبديل الوضع ليعطي تميزاً */
+    body.dark-theme .nav__language {
+        background-color: rgba(212, 175, 55, 0.1); /* خلفية ذهبية خفيفة جداً */
+    }
+}
+/* ضبط خاص للغة الإنجليزية في الجوال فقط */
+/* نفترض أن موقعك يضيف كلاس 'en' عند التحويل */
+
+@media screen and (max-width: 767px) {
+    /* استهداف النصوص عندما تكون اللغة إنجليزية */
+    [lang="en"] .skills__name,
+    body.en .skills__name {
+        font-size: 0.65rem !important; /* أصغر قليلاً من العربي ليتناسب مع الكلمات الإنجليزية الطويلة */
+        letter-spacing: -0.2px; /* تقليل المسافة بين الحروف لتوفير مساحة */
+    }
+
+    [lang="en"] .home__title,
+    body.en .home__title {
+        font-size: 1.3rem !important;
+    }
+
+    [lang="en"] .skills__text,
+    body.en .skills__text {
+        font-size: 0.7rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* موازنة المسافات في وضع الإنجليزي */
+    [lang="en"] .skills__data,
+    body.en .skills__data {
+        padding: 0.5rem 0.7rem !important;
+    }
+}/* ضبط المحاذاة للغة الإنجليزية (من اليسار لليمين) */
+[lang="en"] body, 
+body.en {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+[lang="en"] .skills__container, 
+body.en .skills__container {
+    text-align: left !important;
+}
+
+[lang="en"] .skills__data, 
+body.en .skills__data {
+    flex-direction: row-reverse !important; /* لتبديل مكان الأيقونة والنسبة */
+}
+
+[lang="en"] .skills__icon, 
+body.en .skills__icon {
+    margin-left: 0 !important;
+    margin-right: 0.5rem !important; /* عكس المسافة لتكون بعد الأيقونة من اليمين */
+}
+
+[lang="en"] .skills__bar, 
+body.en .skills__bar {
+    right: auto !important;
+    left: 0 !important; /* شريط التحميل يبدأ من اليسار */
+}
+
+[lang="en"] .home__data, 
+body.en .home__data {
+    text-align: left !important;
+}
